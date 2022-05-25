@@ -71,7 +71,7 @@ const animateRow = (row, speed) => {
 
   setTimeout(()=>{
 row.remove();
-  },5000)
+  },15000)
 };
 
 const startGame = (speed, interval) => {
