@@ -5,7 +5,10 @@
 }
 
 body {
-  background-color: rgb(34, 34, 34);
+  background-color: rgb(0, 251, 255);
+  background: url("./assets/background.svg") rgb(168, 196, 197) no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .game-wrapper{
@@ -13,9 +16,33 @@ body {
     flex-direction: column;
     align-content: space-between;
     margin: auto;
+    margin-top: 50px;
     height: 90vh;
     width: 70vw;
 }
+
+.play-button{
+    background-color: aquamarine;
+    color: blue;
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: block;
+    position: absolute;
+    top: calc(50vh - 50px);
+    left: calc(50vw - 100px);
+    height: 100px;
+    width: 200px;
+    box-shadow: 7px 7px 0 0 darkcyan;
+    border-radius: 1000px;
+    cursor: pointer;
+}
+
+.play-button:hover{
+    box-shadow: none;
+    transform: translate(10px, 10px);
+}
+
 
 .board-wrapper {
   --arrow-outline: white;
@@ -104,7 +131,7 @@ body {
   }
 
   50% {
-    box-shadow: 1px 1px 10px 2px var(--arrow-outline);
+    box-shadow: 0 0 10px 7px var(--arrow-outline);
   }
 
   to {
@@ -118,4 +145,8 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.hidden{
+    display: none;
 }

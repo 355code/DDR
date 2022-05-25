@@ -1,3 +1,9 @@
+// Bliss by Luke Bergs | https://soundcloud.com/bergscloud/
+// Creative Commons - Attribution-ShareAlike 3.0 Unported
+// https://creativecommons.org/licenses/by-sa/3.0/
+// Music promoted by https://www.chosic.com/free-music/all/
+
+
 let ACTIVE = null;
 const DIRECTIONS = ['ArrowLeft', 'ArrowUp', 'ArrowDown', 'ArrowRight']
 
@@ -6,9 +12,15 @@ const DIRECTIONS = ['ArrowLeft', 'ArrowUp', 'ArrowDown', 'ArrowRight']
 
 const board = document.getElementById("board");
 const generator = document.getElementById("new-row-generator");
+const playButton = document.getElementById('play-button');
 
 const boardTop = board.getBoundingClientRect().top;
-console.log(boardTop)
+//console.log(boardTop)
+
+const playAudio = (clip)=>{
+    var audio = new Audio(clip);
+    audio.play();
+}
 
 const handleKeyDown = (e) => {
     const directionIndex = DIRECTIONS.findIndex((direction) => direction === e.key)
@@ -16,8 +28,12 @@ const handleKeyDown = (e) => {
 if( directionIndex == activeArrow ){
 console.log('hit')
 ACTIVE.children[directionIndex].style.setProperty("--arrow-outline", "green")
+const clip = './assets/win.wav';
+playAudio(clip);
 }else{
     console.log('miss')
+    const clip = './assets/fail.wav';
+playAudio(clip);
    // ACTIVE.children[directionIndex].style.setProperty("--arrow-outline", "red")
 }  
 };
@@ -46,7 +62,7 @@ const animateRow = (row, speed) => {
     const rowTop = row.getBoundingClientRect().top;
     const proximity = rowTop - boardTop;
     if( proximity < 40 && proximity > - 20){
-        console.log(row)
+     //   console.log(row)
         ACTIVE = row;
     }
     row.style.transform = `translateY(${-i}px)`;
@@ -59,10 +75,17 @@ row.remove();
 };
 
 const startGame = (speed, interval) => {
+    const clip = './assets/game-music.mp3';
+    playAudio(clip);  
   document.addEventListener("keydown", handleKeyDown);
   setInterval(() => {
     createRow("blue", speed);
   }, interval);
 };
 
-startGame(1, 1000);
+
+playButton.addEventListener('click', ()=>{
+playButton.classList.add('hidden');
+board.classList.remove('hidden')
+startGame(2, 600);
+})
