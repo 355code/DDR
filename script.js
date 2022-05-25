@@ -1,53 +1,68 @@
-const DOWN = "45deg";
-const LEFT = "135deg";
-const UP = "225deg";
-const RIGHT = "315deg";
-const BLOCK = [LEFT, UP, DOWN, RIGHT];
+let ACTIVE = null;
+const DIRECTIONS = ['ArrowLeft', 'ArrowUp', 'ArrowDown', 'ArrowRight']
 
-const arrowTemplate = document.getElementById("arrow-template");
-const arrowPanel = document.getElementById("primary");
+// const arrowTemplate = document.getElementById("arrow-template");
+// const arrowPanel = document.getElementById("primary");
 
-const createArrow = (outineColor, arrowColor, direction) => {
-  const newArrow = arrowTemplate.cloneNode(true);
-  newArrow.style.setProperty("--arrow-outline", outineColor);
-  newArrow.style.setProperty("--arrow-color", arrowColor);
-  newArrow.style.setProperty("--rotation", direction);
-  return newArrow;
+const board = document.getElementById("board");
+const generator = document.getElementById("new-row-generator");
+
+const boardTop = board.getBoundingClientRect().top;
+console.log(boardTop)
+
+const handleKeyDown = (e) => {
+    const directionIndex = DIRECTIONS.findIndex((direction) => direction === e.key)
+    const activeArrow = ACTIVE.getAttribute('data-active')
+if( directionIndex == activeArrow ){
+console.log('hit')
+ACTIVE.children[directionIndex].style.setProperty("--arrow-outline", "green")
+}else{
+    console.log('miss')
+   // ACTIVE.children[directionIndex].style.setProperty("--arrow-outline", "red")
+}  
 };
 
-// BLOCK.forEach((direction) => {
-//   const newPanelArrow = createArrow("white", "black", direction);
-//   arrowPanel.append(newPanelArrow);
-// });
-
-const generateRandomArrowBlock = () => {
-  const newBlock = document.createElement("div");
-  newBlock.classList.add("arrow-block");
-
+const createRow = (outineColor, speed) => {
+  const newRow = board.cloneNode(true);
+  newRow.style.position = "absolute";
   const randomizer = Math.floor(Math.random() * 4);
-
-  BLOCK.forEach((direction, index) => {
-    let arrowToAdd;
-    if (index === randomizer) {
-      arrowToAdd = createArrow("lightblue", "white", direction);
+  newRow.setAttribute('data-active', randomizer)
+  for (let i = 0; i < 4; i++) {
+    if (i === randomizer) {
+      newRow.children[i].style.setProperty("--arrow-outline", outineColor);
     } else {
-      arrowToAdd = createArrow("transparent", "transparent", direction);
+      newRow.children[i].style.setProperty("--arrow-outline", "transparent");
+      newRow.children[i].style.setProperty("--arrow-color", 'transparent');
+
     }
-    newBlock.append(arrowToAdd);
-    return newBlock;
-  });
+  }
+  generator.append(newRow);
+  animateRow(newRow, speed);
 };
 
-const animateBlock = () => {
-  const toAnimate = generateRandomArrowBlock();
+const animateRow = (row, speed) => {
+  let i = 0;
+  setInterval(() => {
+    const rowTop = row.getBoundingClientRect().top;
+    const proximity = rowTop - boardTop;
+    if( proximity < 40 && proximity > - 20){
+        console.log(row)
+        ACTIVE = row;
+    }
+    row.style.transform = `translateY(${-i}px)`;
+    i += 1;
+  }, speed);
 
-  const keyframes = [{ transform: "translateY(-300px)" }];
-
-  const options = {
-    duration: 1000,
-  };
-
-  toAnimate.animate(keyframes, options);
+  setTimeout(()=>{
+row.remove();
+  },5000)
 };
 
-animateBlock();
+const startGame = (speed, interval) => {
+  document.addEventListener("keydown", handleKeyDown);
+  setInterval(() => {
+    createRow("blue", speed);
+  }, interval);
+};
+
+startGame(1, 1000);

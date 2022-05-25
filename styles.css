@@ -8,18 +8,27 @@ body {
   background-color: rgb(34, 34, 34);
 }
 
-.board-wrapper{
-    --arrow-outline: white;
-    --arrow-color: rgb(34, 34, 34);    
+.game-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    margin: auto;
+    height: 90vh;
+    width: 70vw;
 }
 
-.board-wrapper{
-    background-color: black;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
+.board-wrapper {
+  --arrow-outline: white;
+  --arrow-color: rgb(34, 34, 34);
+}
+
+.board-wrapper {
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
 }
 
 .arrow-wrapper {
@@ -43,7 +52,7 @@ body {
 }
 
 .arrow::before {
-  content: '';
+  content: "";
   top: 10px;
   left: 20px;
   display: block;
@@ -56,7 +65,7 @@ body {
 }
 
 .arrow::after {
-  content: '';
+  content: "";
   z-index: -1;
   top: 10px;
   left: 20px;
@@ -73,20 +82,20 @@ body {
   animation-iteration-count: infinite;
 }
 
-.up-arrow{
-      transform: rotate(-135deg);
+.up-arrow {
+  transform: rotate(-135deg);
 }
 
-.right-arrow{
-    transform: rotate(-45deg);
+.right-arrow {
+  transform: rotate(-45deg);
 }
 
-.down-arrow{
-    transform: rotate(45deg);
+.down-arrow {
+  transform: rotate(45deg);
 }
 
-.left-arrow{
-    transform: rotate(135deg);
+.left-arrow {
+  transform: rotate(135deg);
 }
 
 @keyframes glow {
@@ -103,8 +112,10 @@ body {
   }
 }
 
-.arrow-block {
+.new-row-generator {
+  margin-top: auto;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
