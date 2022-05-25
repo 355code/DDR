@@ -1,20 +1,34 @@
 :root {
   --arrow-outline: red;
   --arrow-color: blue;
-  --rotation: 315deg;
+  --rotation: 0deg;
 }
 
 body {
-  background-color: black;
+  background-color: rgb(34, 34, 34);
 }
 
-.arrow {
+.board-wrapper{
+    --arrow-outline: white;
+    --arrow-color: rgb(34, 34, 34);    
+}
+
+.board-wrapper{
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.arrow-wrapper {
   height: 100px;
   width: 100px;
-  transform: rotate(var(--rotation));
+  /* transform: rotate(var(--rotation)); */
   margin: 20px;
 }
-.arrow-head {
+.arrow {
   display: block;
   position: absolute;
   margin: 30px;
@@ -28,11 +42,12 @@ body {
   animation-iteration-count: infinite;
 }
 
-.arrow-tail {
+.arrow::before {
+  content: '';
   top: 10px;
   left: 20px;
   display: block;
-  transform: rotate(-45deg);
+  transform: rotate(-45deg) translateY(-50px);
   position: absolute;
   height: 50px;
   width: 30px;
@@ -40,14 +55,38 @@ body {
   border-radius: 5px;
 }
 
-.shadow {
+.arrow::after {
+  content: '';
   z-index: -1;
-  transform: rotate(-45deg) translateY(-7px);
+  top: 10px;
+  left: 20px;
+  height: 50px;
+  width: 30px;
+  display: block;
+  position: absolute;
+  transform: rotate(-45deg) translateY(-57px);
   background-color: var(--arrow-outline);
   border: solid var(--arrow-outline) 5px;
+  border-radius: 5px;
   animation-duration: 3s;
   animation-name: glow;
   animation-iteration-count: infinite;
+}
+
+.up-arrow{
+      transform: rotate(-135deg);
+}
+
+.right-arrow{
+    transform: rotate(-45deg);
+}
+
+.down-arrow{
+    transform: rotate(45deg);
+}
+
+.left-arrow{
+    transform: rotate(135deg);
 }
 
 @keyframes glow {

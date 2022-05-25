@@ -15,10 +15,10 @@ const createArrow = (outineColor, arrowColor, direction) => {
   return newArrow;
 };
 
-BLOCK.forEach((direction) => {
-  const newPanelArrow = createArrow("white", "black", direction);
-  arrowPanel.append(newPanelArrow);
-});
+// BLOCK.forEach((direction) => {
+//   const newPanelArrow = createArrow("white", "black", direction);
+//   arrowPanel.append(newPanelArrow);
+// });
 
 const generateRandomArrowBlock = () => {
   const newBlock = document.createElement("div");
