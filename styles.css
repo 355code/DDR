@@ -11,38 +11,37 @@ body {
   background-size: cover;
 }
 
-.game-wrapper{
-    display: flex;
-    flex-direction: column;
-    align-content: space-between;
-    margin: auto;
-    margin-top: 50px;
-    height: 90vh;
-    width: 70vw;
+.game-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  margin: auto;
+  margin-top: 50px;
+  height: 90vh;
+  width: 70vw;
 }
 
-.play-button{
-    background-color: aquamarine;
-    color: blue;
-    font-size: 2rem;
-    font-weight: bold;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: block;
-    position: absolute;
-    top: calc(50vh - 50px);
-    left: calc(50vw - 100px);
-    height: 100px;
-    width: 200px;
-    box-shadow: 7px 7px 0 0 darkcyan;
-    border-radius: 1000px;
-    cursor: pointer;
+.play-button {
+  background-color: aquamarine;
+  color: blue;
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: block;
+  position: absolute;
+  top: calc(50vh - 50px);
+  left: calc(50vw - 100px);
+  height: 100px;
+  width: 200px;
+  box-shadow: 7px 7px 0 0 darkcyan;
+  border-radius: 1000px;
+  cursor: pointer;
 }
 
-.play-button:hover{
-    box-shadow: none;
-    transform: translate(10px, 10px);
+.play-button:hover {
+  box-shadow: none;
+  transform: translate(10px, 10px);
 }
-
 
 .board-wrapper {
   --arrow-outline: white;
@@ -147,6 +146,32 @@ body {
   align-items: center;
 }
 
-.hidden{
-    display: none;
+.hidden {
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .arrow-wrapper {
+    height: 70px;
+    width: 60px;
+  }
+
+  .arrow {
+    height: 25px;
+    width: 25px;
+  }
+
+  .arrow::after {
+    height: 25px;
+    width: 15px;
+    top: 25px;
+  left: 30px;
+  }
+
+  .arrow::before {
+    height: 25px;
+    width: 15px;
+    top: 25px;
+  left: 30px;
+  }
 }
