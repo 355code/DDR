@@ -29,6 +29,8 @@ const handleKeyDown = (e) => {
   const directionIndex = DIRECTIONS.findIndex(
     (direction) => direction === e.key
   );
+  if(!ACTIVE) return 
+  
   const activeArrow = ACTIVE.getAttribute("data-active");
   if (directionIndex == activeArrow) {
     console.log("hit");
