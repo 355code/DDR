@@ -5,6 +5,7 @@
 
 let ACTIVE = null;
 const DIRECTIONS = ["ArrowLeft", "ArrowUp", "ArrowDown", "ArrowRight"];
+const COLORS = ["red", "orange", "yellow", "green", "blue", "purple"]
 
 // const arrowTemplate = document.getElementById("arrow-template");
 // const arrowPanel = document.getElementById("primary");
@@ -30,8 +31,12 @@ const handleKeyDown = (e) => {
     console.log("hit");
     ACTIVE.children[directionIndex].style.setProperty(
       "--arrow-outline",
-      "green"
+      "lightgreen"
     );
+    ACTIVE.children[directionIndex].style.setProperty(
+        "--arrow-color",
+        "lightgreen"
+      );
     const clip = "./assets/win.wav";
     playAudio(clip);
   } else {
@@ -92,7 +97,9 @@ const startGame = (speed, interval) => { //speed = pixels per milisecond
   playAudio(clip);
   document.addEventListener("keydown", handleKeyDown);
   setInterval(() => {
-    createRow("blue", speed);
+    const colorRandomizer = Math.floor(Math.random() * 6);
+    const color = COLORS[colorRandomizer];
+    createRow(color, speed);
   }, interval);
 };
 

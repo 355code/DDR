@@ -130,7 +130,7 @@ body {
   }
 
   50% {
-    box-shadow: 0 0 10px 7px var(--arrow-outline);
+    box-shadow: 0 0 7px 3px var(--arrow-outline);
   }
 
   to {
@@ -154,23 +154,24 @@ body {
   .arrow-wrapper {
     height: 70px;
     width: 60px;
+    margin: 10px;
   }
 
   .arrow {
-    height: 25px;
-    width: 25px;
+    height: 35px;
+    width: 35px;
   }
 
   .arrow::after {
-    height: 25px;
-    width: 15px;
+    height: 35px;
+    width: 25px;
     top: 25px;
   left: 30px;
   }
 
   .arrow::before {
-    height: 25px;
-    width: 15px;
+    height: 35px;
+    width: 25px;
     top: 25px;
   left: 30px;
   }
