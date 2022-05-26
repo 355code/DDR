@@ -60,13 +60,14 @@ const animateRow = (row, speed) => {
   let i = 0;
   setInterval(() => {
     const rowTop = row.getBoundingClientRect().top;
+    console.log('row-top', rowTop)
     const proximity = rowTop - boardTop;
     if( proximity < 40 && proximity > - 20){
      //   console.log(row)
         ACTIVE = row;
     }
     row.style.transform = `translateY(${-i}px)`;
-    i += 1;
+    i += 3;
   }, speed);
 
   setTimeout(()=>{
@@ -80,6 +81,7 @@ const startGame = (speed, interval) => {
   document.addEventListener("keydown", handleKeyDown);
   setInterval(() => {
     createRow("blue", speed);
+    console.log('row created')
   }, interval);
 };
 
@@ -87,5 +89,5 @@ const startGame = (speed, interval) => {
 playButton.addEventListener('click', ()=>{
 playButton.classList.add('hidden');
 board.classList.remove('hidden')
-startGame(2, 600);
+startGame(2, 1000);
 })
