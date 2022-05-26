@@ -9,6 +9,25 @@ body {
   background: url("./assets/background.svg") rgb(168, 196, 197) no-repeat;
   background-position: center;
   background-size: cover;
+  overflow: hidden;
+}
+
+p{
+  margin: 0;
+}
+
+.points-wrapper{
+  width: fit-content;
+  padding: 30px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  border: inset 5px black;
+  border-radius: 1000px;
 }
 
 .game-wrapper {

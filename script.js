@@ -6,6 +6,7 @@
 let ACTIVE = null;
 const DIRECTIONS = ["ArrowLeft", "ArrowUp", "ArrowDown", "ArrowRight"];
 const COLORS = ["red", "orange", "yellow", "green", "blue", "purple"]
+let POINTS = 0;
 
 // const arrowTemplate = document.getElementById("arrow-template");
 // const arrowPanel = document.getElementById("primary");
@@ -13,6 +14,8 @@ const COLORS = ["red", "orange", "yellow", "green", "blue", "purple"]
 const board = document.getElementById("board");
 const generator = document.getElementById("new-row-generator");
 const playButton = document.getElementById("play-button");
+const pointCounter = document.getElementById("points");
+
 
 const boardTop = board.getBoundingClientRect().top;
 //console.log(boardTop)
@@ -37,6 +40,8 @@ const handleKeyDown = (e) => {
         "--arrow-color",
         "lightgreen"
       );
+    POINTS++
+    pointCounter.innerHTML = `Points: ${POINTS}`
     const clip = "./assets/win.wav";
     playAudio(clip);
   } else {
