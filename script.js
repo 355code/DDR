@@ -30,7 +30,7 @@ const handleKeyDown = (e) => {
     (direction) => direction === e.key
   );
   if(!ACTIVE) return 
-  
+
   const activeArrow = ACTIVE.getAttribute("data-active");
   if (directionIndex == activeArrow) {
     console.log("hit");
@@ -76,14 +76,17 @@ const animateRow = (row, speed) => {
   const rowTop = row.getBoundingClientRect().top;
   const proximity = rowTop - boardTop;
 
+  const LOWER_THRESHOLD = 70;
+  const UPPER_THRESHOLD = 90;
+
   setTimeout(() => {
     ACTIVE = row;
     setTimeout(() => {
       if (ACTIVE === row) {
         ACTIVE = null;
       }
-    }, (1/speed)* 70);
-  }, (1/speed) * (proximity - 50));
+    }, (1/speed)* UPPER_THRESHOLD);
+  }, (1/speed) * (proximity - LOWER_THRESHOLD));
 
   const options = [{ transform: "translateY(-10000px)" }];
 
