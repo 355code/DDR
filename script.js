@@ -18,7 +18,6 @@ const pointCounter = document.getElementById("points");
 
 
 const boardTop = board.getBoundingClientRect().top;
-//console.log(boardTop)
 
 const playAudio = (clip) => {
   var audio = new Audio(clip);
@@ -33,7 +32,6 @@ const handleKeyDown = (e) => {
 
   const activeArrow = ACTIVE.getAttribute("data-active");
   if (directionIndex == activeArrow) {
-    console.log("hit");
     ACTIVE.children[directionIndex].style.setProperty(
       "--arrow-outline",
       "lightgreen"
@@ -47,7 +45,6 @@ const handleKeyDown = (e) => {
     const clip = "./assets/win.wav";
     playAudio(clip);
   } else {
-    console.log("miss");
     const clip = "./assets/fail.wav";
     playAudio(clip);
     // ACTIVE.children[directionIndex].style.setProperty("--arrow-outline", "red")
@@ -69,7 +66,6 @@ const createRow = (outineColor, speed) => {
   }
   generator.append(newRow);
   animateRow(newRow, speed);
-  console.log(randomizer);
 };
 
 const animateRow = (row, speed) => {
@@ -103,7 +99,7 @@ const animateRow = (row, speed) => {
 };
 
 const startGame = (speed, interval) => { //speed = pixels per milisecond
-  const clip = "./assets/game-music.mp3";
+  const clip = "./assets/game-music-new.mp3";
   playAudio(clip);
   document.addEventListener("keydown", handleKeyDown);
   setInterval(() => {
